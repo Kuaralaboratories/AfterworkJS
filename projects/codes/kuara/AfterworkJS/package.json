@@ -1,0 +1,28 @@
+{
+  "name": "afterworkjs",
+  "version": "1.0.0",
+  "description": "afterworkjs is the library that even his mother didn't love him correctly",
+  "main": "lib/afterwork.js",
+  "scripts": {
+    "start": "ts-node lib/afterwork.ts"
+  },
+  "keywords": [
+    "backend",
+    "javascript",
+    "typescript"
+  ],
+  "author": "Yakup Cemil Kayabaş",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.14.12",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.8.0",
+    "mysql2": "^3.10.3",
+    "pg": "^8.12.0"
+  }
+}
