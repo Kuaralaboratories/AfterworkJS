@@ -1,4 +1,4 @@
-import { AFServer, Request, Response, Handler } from '../server/afserver';
+import { AFServer, Request, Response, Handler, NextFunction } from '../server/afserver';
 import jwt from 'jsonwebtoken';
 import { MongoDBAdapter } from '../adapters/mongodbAdapter';
 import { PostgresAdapter } from '../adapters/postgresqlAdapter';
@@ -20,7 +20,7 @@ class AfterworkJS {
     this.secret = config.secret;
     this.dbAdapter = this.initializeDbAdapter(config.dbType, config.dbConfig);
 
-    this.server.use(async (req: Request, res: Response, next) => {
+    this.server.use(async (req: Request, res: Response, next: NextFunction) => {
       req.db = this.dbAdapter;
       next();
     });
@@ -47,7 +47,7 @@ class AfterworkJS {
     this.server.addRoute(method, path, handler);
   }
 
-  public authenticateToken(req: Request, res: Response, next: Handler) {
+  public authenticateToken(req: Request, res: Response, next: NextFunction) {
     const token = req.headers['authorization']?.split(' ')[1];
     if (!token) {
       res.statusCode = 401;

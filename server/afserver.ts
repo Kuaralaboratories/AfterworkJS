@@ -1,29 +1,29 @@
 import { createServer, IncomingMessage, ServerResponse } from 'http';
 import { parse } from 'url';
-import { parse as parseQuery } from 'querystring';
-import { ParsedUrlQuery } from 'querystring';
+import { parse as parseQuery, ParsedUrlQuery } from 'querystring';
+
+type NextFunction = (err?: any) => void;
 
 interface Request extends IncomingMessage {
   query?: ParsedUrlQuery;
   body?: any;
   params?: { [key: string]: string };
-}
-
-interface Response extends ServerResponse {
-  json: (data: any) => void;
+  db?: any;
+  user?: any;
 }
 
 interface CustomRequest extends Request {
-    db?: any;
-    user?: any;
+  db?: any;
+  user?: any;
 }
 
-type Handler = (req: CustomRequest, res: Response, next: NextFunction) => void;
+type Handler = (req: CustomRequest, res: ServerResponse & { json: (data: any) => void }, next: NextFunction) => void;
 
 class AFServer {
   private routes: { [key: string]: { [key: string]: Handler[] } } = {};
   private middlewares: Handler[] = [];
   private server: any;
+  private dbAdapter: any; 
 
   constructor() {
     this.createServer();
@@ -36,28 +36,28 @@ class AFServer {
   listen(port: number, callback: () => void) {
     this.server.listen(port, callback);
   }
-  
-  private attachMiddleware(req: CustomRequest, res: Response, next: NextFunction) { 
-    req.db = this.dbAdapter; 
+
+  private attachMiddleware(req: CustomRequest, res: ServerResponse & { json: (data: any) => void }, next: NextFunction) {
+    req.db = this.dbAdapter;
     req.user = {};
     next();
   }
-  
+
   private createServer() {
-    createServer((req: Request, res: Response) => {
+    this.server = createServer((req: CustomRequest, res: ServerResponse) => {
       const parsedUrl = parse(req.url!, true);
       req.query = parsedUrl.query;
 
-      res.json = (data: any) => {
+      (res as any).json = (data: any) => {
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify(data));
       };
 
-      this.handleRequest(req, res);
-    }).listen(3000, () => console.log(`Server running on port 3000`));
+      this.handleRequest(req, res as ServerResponse & { json: (data: any) => void });
+    });
   }
 
-  private handleRequest(req: Request, res: Response) {
+  private handleRequest(req: CustomRequest, res: ServerResponse & { json: (data: any) => void }) {
     const { pathname } = parse(req.url!, true);
     const method = req.method!.toLowerCase();
 
@@ -66,7 +66,13 @@ class AFServer {
     const handlers = [...this.middlewares, ...routeHandlers];
 
     let index = 0;
-    const next = () => {
+    const next: NextFunction = (err?: any) => {
+      if (err) {
+        res.statusCode = 500;
+        res.end(`Internal Server Error: ${err.message}`);
+        return;
+      }
+
       const handler = handlers[index++];
       if (handler) {
         handler(req, res, next);
@@ -77,10 +83,6 @@ class AFServer {
     };
 
     next();
-  }
-
-  public use(handler: Handler) {
-    this.middlewares.push(handler);
   }
 
   public addRoute(method: string, path: string, handler: Handler) {
@@ -112,4 +114,4 @@ class AFServer {
   }
 }
 
-export { AFServer, Request, Response, Handler };
+export { AFServer, Request, ServerResponse as Response, Handler, NextFunction };

@@ -1,4 +1,4 @@
-import { Pool, QueryConfig } from 'pg';
+import { Pool, QueryConfig, QueryResult } from 'pg';
 
 interface PostgresConfig {
   user: string;
@@ -15,8 +15,8 @@ class PostgresAdapter {
     this.pool = new Pool(config);
   }
 
-  private async query(query: QueryConfig) {
-    const res = await this.pool.query(query);
+  private async query(query: QueryConfig): Promise<any[]> {
+    const res: QueryResult<any> = await this.pool.query(query);
     return res.rows;
   }
 
@@ -45,14 +45,14 @@ class PostgresAdapter {
     return result[0];
   }
 
-  async deleteOne(table: string, query: object) {
+  async deleteOne(table: string, query: object): Promise<boolean> {
     const text = `DELETE FROM ${table} WHERE ${Object.keys(query).map((k, i) => `${k} = $${i + 1}`).join(' AND ')}`;
     const values = Object.values(query);
-    const result = await this.pool.query({ text, values });
-    return result.rowCount > 0;
+    const result: QueryResult<any> = await this.pool.query({ text, values });
+    return (result.rowCount !== undefined && result.rowCount !== null && result.rowCount > 0);
   }
 
-  async find(table: string, query: object) {
+  async find(table: string, query: object): Promise<any[]> {
     const text = `SELECT * FROM ${table} WHERE ${Object.keys(query).map((k, i) => `${k} = $${i + 1}`).join(' AND ')}`;
     const values = Object.values(query);
     return this.query({ text, values });

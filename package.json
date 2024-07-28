@@ -2,10 +2,14 @@
   "name": "afterworkjs",
   "version": "1.0.0",
   "description": "afterworkjs is the library that even his mother didn't love him correctly",
-  "main": "lib/afterwork.js",
+  "outDir": "./dist",
+  "rootDir": "./lib",
+  "main": "lib/afterwork.ts",
   "scripts": {
     "start": "ts-node lib/afterwork.ts"
   },
+  "include": ["../**/*.ts"],
+  "exclude": ["node_modules"],
   "keywords": [
     "backend",
     "javascript",
@@ -16,13 +20,17 @@
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.14.12",
+    "@types/pg": "^8.11.6",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   },
   "dependencies": {
+    "http": "^0.0.1-security",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.8.0",
     "mysql2": "^3.10.3",
-    "pg": "^8.12.0"
+    "pg": "^8.12.0",
+    "querystring": "^0.2.1",
+    "url": "^0.11.4"
   }
 }
