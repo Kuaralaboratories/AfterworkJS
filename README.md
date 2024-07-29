@@ -2,11 +2,11 @@
 
 **Afterwork.js**: Backend framework that isn't loved properly by even his mother. 🚬🥃
 
+![Afterworkjs Logo](images/Afterworkjs.svg)
+
 ## Overview
 
 Welcome to Afterwork.js – a backend framework that's as lightweight, fast, and atomic as they come. Designed with simplicity in mind, Afterwork.js provides the essentials you need to build efficient and effective server-side applications without the bloat.
-
-![Afterworkjs Logo](images/Afterworkjs.svg)
 
 ## Features
 
