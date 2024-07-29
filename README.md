@@ -6,6 +6,8 @@
 
 Welcome to Afterwork.js – a backend framework that's as lightweight, fast, and atomic as they come. Designed with simplicity in mind, Afterwork.js provides the essentials you need to build efficient and effective server-side applications without the bloat.
 
+![Afterworkjs Logo](images/Afterworkjs.svg)
+
 ## Features
 
 - **Lightweight**: Minimal overhead ensures your applications run fast and efficiently.
