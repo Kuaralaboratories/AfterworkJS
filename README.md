@@ -21,7 +21,7 @@ To get started with Afterwork.js, follow these simple steps:
 1. **Install Afterwork.js**
 
    ```bash
-   npm install afterworkjs
+   npm install kuaralabs-afterworkjs
    ```
 
 2. **Create Your Server**
