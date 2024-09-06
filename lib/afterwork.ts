@@ -3,12 +3,7 @@ import jwt from 'jsonwebtoken';
 import { MongoDBAdapter } from '../adapters/mongodbAdapter';
 import { PostgresAdapter } from '../adapters/postgresqlAdapter';
 import { MySQLAdapter } from '../adapters/mysqlAdapter';
-
-enum DbType {
-  Mongo = 'mongo',
-  Postgres = 'postgres',
-  MySQL = 'mysql',
-}
+import { DbType } from '../types/types.ts';
 
 interface AfterworkJSConfig {
   secret: string;
