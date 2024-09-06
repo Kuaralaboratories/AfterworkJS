@@ -4,9 +4,11 @@ import { MongoDBAdapter } from '../adapters/mongodbAdapter';
 import { PostgresAdapter } from '../adapters/postgresqlAdapter';
 import { MySQLAdapter } from '../adapters/mysqlAdapter';
 
+type DbType = 'mongo' | 'postgres' | 'mysql';
+
 interface AfterworkJSConfig {
   secret: string;
-  dbType: 'mongo' | 'postgres' | 'mysql';
+  dbType: DbType;
   dbConfig: any;
 }
 
