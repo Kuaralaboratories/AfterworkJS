@@ -48,7 +48,14 @@ class AfterworkJS {
   }
 
   public authenticateToken(req: Request, res: Response, next: NextFunction) {
-    const token = req.headers['authorization']?.split(' ')[1];
+    const authHeader = req.headers['authorization'];
+    if (typeof authHeader !== 'string') {
+      res.statusCode = 401;
+      res.end('Unauthorized');
+      return;
+    }
+
+    const token = authHeader.split(' ')[1];
     if (!token) {
       res.statusCode = 401;
       res.end('Unauthorized');

@@ -12,6 +12,7 @@ interface Request extends IncomingMessage {
   params?: { [key: string]: string };
   db?: any;
   user?: any;
+  headers: { [key: string]: string | string[] | undefined };
 }
 
 interface CustomRequest extends Request {
