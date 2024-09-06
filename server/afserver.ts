@@ -5,6 +5,7 @@ import { parse as parseQuery, ParsedUrlQuery } from 'querystring';
 type NextFunction = (err?: any) => void;
 
 interface Request extends IncomingMessage {
+  url: string;
   query?: ParsedUrlQuery;
   body?: any;
   params?: { [key: string]: string };
@@ -44,16 +45,18 @@ class AFServer {
   }
 
   private createServer() {
-    this.server = createServer((req: CustomRequest, res: ServerResponse) => {
-      const parsedUrl = parse(req.url!, true);
-      req.query = parsedUrl.query;
-
+    this.server = createServer((req: IncomingMessage, res: ServerResponse) => {
+      if (req.url) {  
+        const parsedUrl = parse(req.url, true);
+        (req as CustomRequest).query = parsedUrl.query;
+      }
+  
       (res as any).json = (data: any) => {
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify(data));
       };
-
-      this.handleRequest(req, res as ServerResponse & { json: (data: any) => void });
+  
+      this.handleRequest(req as CustomRequest, res as ServerResponse & { json: (data: any) => void });
     });
   }
 
