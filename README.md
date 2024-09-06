@@ -31,15 +31,19 @@ To get started with Afterwork.js, follow these simple steps:
    ```typescript
    import { AfterworkJS } from 'afterworkjs';
 
-   const config = {
-     secret: 'your-secret-key',
-     dbType: 'mongo', // or 'postgres', 'mysql'
+   // you can use dotenv
+   const SECRET_KEY = 'your_secret_key';  // Replace with your actual secret key
+   const DB_URL = 'your_database_url';    // Replace with your actual database URL
+   const DB_NAME = 'your_database_name';  // Replace with your actual database name
+   
+   const app = new AfterworkJS({
+     secret: SECRET_KEY,
+     dbType: "postgres",                  // Replace with the databases that is supported
      dbConfig: {
-       // Your database config
+       dbUrl: DB_URL,
+       dbName: DB_NAME
      }
-   };
-
-   const app = new AfterworkJS(config);
+   });
 
    app.addRoute('get', '/hello', (req, res, next) => {
      res.json({ message: 'Hello, world!' });
@@ -70,12 +74,17 @@ Here's a simple example of how to use Afterwork.js for routing and middleware:
 ```typescript
 import { AfterworkJS } from 'afterworkjs';
 
+// you can use dotenv
+const SECRET_KEY = 'your_secret_key';  // Replace with your actual secret key
+const DB_URL = 'your_database_url';    // Replace with your actual database URL
+const DB_NAME = 'your_database_name';  // Replace with your actual database name
+
 const app = new AfterworkJS({
-  secret: 'your-secret-key',
-  dbType: 'mongo',
+  secret: SECRET_KEY,
+  dbType: "postgres",                  // Replace with the databases that is supported
   dbConfig: {
-    dbUrl: 'mongodb://localhost:27017',
-    dbName: 'mydatabase'
+    dbUrl: DB_URL,
+    dbName: DB_NAME
   }
 });
 
