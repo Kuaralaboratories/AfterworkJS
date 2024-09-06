@@ -1,5 +1,5 @@
 {
-  "name": "afterworkjs",
+  "name": "kuaralabs-afterworkjs",
   "version": "1.0.0",
   "description": "afterworkjs is the library that even his mother didn't love him correctly",
   "outDir": "./dist",
@@ -8,8 +8,12 @@
   "scripts": {
     "start": "ts-node lib/afterwork.ts"
   },
-  "include": ["../**/*.ts"],
-  "exclude": ["node_modules"],
+  "include": [
+    "../**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
   "keywords": [
     "backend",
     "javascript",

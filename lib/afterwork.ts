@@ -1,4 +1,4 @@
-import { AFServer, Request, Response, Handler, NextFunction } from '../server/afserver';
+import { AFServer, Request, Response, Handler, NextFunction } from '../server/afserver.ts';
 import jwt from 'jsonwebtoken';
 import { MongoDBAdapter } from '../adapters/mongodbAdapter';
 import { PostgresAdapter } from '../adapters/postgresqlAdapter';
@@ -76,3 +76,4 @@ class AfterworkJS {
 }
 
 export { AfterworkJS };
+export { Request, Response, NextFunction } from '../server/afserver.ts';
