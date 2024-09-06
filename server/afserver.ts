@@ -6,6 +6,7 @@ type NextFunction = (err?: any) => void;
 
 interface Request extends IncomingMessage {
   url: string;
+  method: string;
   query?: ParsedUrlQuery;
   body?: any;
   params?: { [key: string]: string };

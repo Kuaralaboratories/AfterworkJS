@@ -1,6 +1,6 @@
 {
   "name": "kuaralabs-afterworkjs",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "afterworkjs is the library that even his mother didn't love him correctly",
   "outDir": "./dist",
   "rootDir": "./lib",
