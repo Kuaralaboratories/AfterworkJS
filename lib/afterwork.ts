@@ -4,7 +4,11 @@ import { MongoDBAdapter } from '../adapters/mongodbAdapter';
 import { PostgresAdapter } from '../adapters/postgresqlAdapter';
 import { MySQLAdapter } from '../adapters/mysqlAdapter';
 
-type DbType = 'mongo' | 'postgres' | 'mysql';
+enum DbType {
+  Mongo = 'mongo',
+  Postgres = 'postgres',
+  MySQL = 'mysql',
+}
 
 interface AfterworkJSConfig {
   secret: string;
