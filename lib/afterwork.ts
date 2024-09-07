@@ -1,3 +1,7 @@
+/**                           Afterwork.js 
+ *  Afterwork.js is a backend framework for your needs without harming your pocket in all meanings.
+ */
+
 import { AFServer, Request, Response, Handler, NextFunction } from '../server/afserver';
 import jwt from 'jsonwebtoken';
 import { MongoDBAdapter } from '../adapters/mongodbAdapter';
