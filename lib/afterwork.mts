@@ -3,7 +3,7 @@
  */
 
 import { AFServer, Request, Response, Handler, NextFunction } from '../server/afserver.mjs';
-import jwt from 'jsonwebtoken';
+import * as jwt from 'jsonwebtoken';
 import { MongoDBAdapter } from '../adapters/mongodbAdapter.mjs';
 import { PostgresAdapter } from '../adapters/postgresqlAdapter.mjs';
 import { MySQLAdapter } from '../adapters/mysqlAdapter.mjs';
