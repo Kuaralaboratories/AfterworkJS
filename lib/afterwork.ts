@@ -84,4 +84,4 @@ class AfterworkJS {
 }
 
 export { AfterworkJS };
-export { Request, Response, NextFunction } from '../server/afserver.ts';
+export { Request, Response, NextFunction } from '../server/afserver';
