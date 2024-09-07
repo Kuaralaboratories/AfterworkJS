@@ -2,11 +2,11 @@
  *  Afterwork.js is a backend framework for your needs without harming your pocket in all meanings.
  */
 
-import { AFServer, Request, Response, Handler, NextFunction } from '../server/afserver.mts';
+import { AFServer, Request, Response, Handler, NextFunction } from '../server/afserver.mjs';
 import jwt from 'jsonwebtoken';
-import { MongoDBAdapter } from '../adapters/mongodbAdapter.mts';
-import { PostgresAdapter } from '../adapters/postgresqlAdapter.mts';
-import { MySQLAdapter } from '../adapters/mysqlAdapter.mts';
+import { MongoDBAdapter } from '../adapters/mongodbAdapter.mjs';
+import { PostgresAdapter } from '../adapters/postgresqlAdapter.mjs';
+import { MySQLAdapter } from '../adapters/mysqlAdapter.mjs';
 import { DbType } from '../types/types';
 
 interface AfterworkJSConfig {
@@ -88,4 +88,4 @@ class AfterworkJS {
 }
 
 export { AfterworkJS };
-export { Request, Response, NextFunction } from '../server/afserver.mts';
+export { Request, Response, NextFunction } from '../server/afserver.mjs';

@@ -1,13 +1,13 @@
 {
   "name": "kuaralabs-afterworkjs",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "afterworkjs is the library that even his mother didn't love him correctly",
   "outDir": "./dist",
   "rootDir": "./lib",
-  "main": "lib/afterwork.ts",
+  "main": "lib/afterwork.mts",
   "type": "module",
   "scripts": {
-    "start": "ts-node lib/afterwork.ts"
+    "start": "ts-node lib/afterwork.mts"
   },
   "include": [
     "../**/*.ts"
