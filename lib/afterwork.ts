@@ -1,9 +1,9 @@
-import { AFServer, Request, Response, Handler, NextFunction } from '../server/afserver.ts';
+import { AFServer, Request, Response, Handler, NextFunction } from '../server/afserver';
 import jwt from 'jsonwebtoken';
 import { MongoDBAdapter } from '../adapters/mongodbAdapter';
 import { PostgresAdapter } from '../adapters/postgresqlAdapter';
 import { MySQLAdapter } from '../adapters/mysqlAdapter';
-import { DbType } from '../types/types.ts';
+import { DbType } from '../types/types';
 
 interface AfterworkJSConfig {
   secret: string;
