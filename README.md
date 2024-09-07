@@ -114,7 +114,7 @@ const SECRET_KEY = 'your_secret_key';  // Replace with your actual secret key
 const DB_URL = 'your_database_url';    // Replace with your actual database URL
 const DB_NAME = 'your_database_name';  // Replace with your actual database name
 
-const afterwork = new AfterworkJS({ 
+const app = new AfterworkJS({ 
   secret: SECRET_KEY, 
   dbType: 'mongo', 
   dbConfig: {
@@ -123,15 +123,15 @@ const afterwork = new AfterworkJS({
   } 
   });
 
-afterwork.addRoute('get', '/api/users/:id', (req, res) => {
+app.addRoute('get', '/api/users/:id', (req, res) => {
   res.json({ userId: req.params.id });
 });
 
-afterwork.addRoute('get', '/api/*', (req, res) => {
+app.addRoute('get', '/api/*', (req, res) => {
   res.json({ message: 'Wildcard route' });
 });
 
-afterwork.start(3000);
+app.start(3000);
 ```
 
 ## Documentation
