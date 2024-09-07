@@ -67,7 +67,7 @@ To get started with Afterwork.js, follow these simple steps:
 - **Database Integration**: Supports MongoDB, PostgreSQL, and MySQL out of the box.
 - **JWT Authentication**: Secure your routes with JSON Web Tokens.
 
-## Example Usage
+## Example Usages
 
 Here's a simple example of how to use Afterwork.js for routing and middleware:
 
@@ -102,6 +102,36 @@ app.addRoute('get', '/users', async (req, res) => {
 
 // Start the server
 app.start(3000);
+```
+
+and you can try wildcard
+
+```javascript
+import { AfterworkJS } from 'afterworkjs';
+
+// you can use dotenv
+const SECRET_KEY = 'your_secret_key';  // Replace with your actual secret key
+const DB_URL = 'your_database_url';    // Replace with your actual database URL
+const DB_NAME = 'your_database_name';  // Replace with your actual database name
+
+const afterwork = new AfterworkJS({ 
+  secret: SECRET_KEY, 
+  dbType: 'mongo', 
+  dbConfig: {
+    dbUrl: DB_URL,
+    dbName: DB_NAME
+  } 
+  });
+
+afterwork.addRoute('get', '/api/users/:id', (req, res) => {
+  res.json({ userId: req.params.id });
+});
+
+afterwork.addRoute('get', '/api/*', (req, res) => {
+  res.json({ message: 'Wildcard route' });
+});
+
+afterwork.start(3000);
 ```
 
 ## Documentation
