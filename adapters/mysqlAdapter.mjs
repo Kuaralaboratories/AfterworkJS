@@ -1,6 +1,6 @@
 import { createPool } from "mysql2/promise"
 
-class MySQLAdapter {
+export class MySQLAdapter {
   constructor(config) {
     this.pool = createPool(config)
   }
@@ -68,5 +68,3 @@ class MySQLAdapter {
     return results
   }
 }
-
-export { MySQLAdapter }

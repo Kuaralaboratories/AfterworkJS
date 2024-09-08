@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb"
 
-class MongoDBAdapter {
+export class MongoDBAdapter {
   db = null
 
   constructor(config) {
@@ -43,5 +43,3 @@ class MongoDBAdapter {
       .toArray()
   }
 }
-
-export { MongoDBAdapter }

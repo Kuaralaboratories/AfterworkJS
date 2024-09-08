@@ -1,7 +1,7 @@
 import { createServer, ServerResponse } from "http"
 import { parse } from "url"
 
-class AFServer {
+export class AFServer {
   routes = {}
   middlewares = []
 
@@ -138,4 +138,4 @@ class AFServer {
   }
 }
 
-export { AFServer, ServerResponse as Response }
+export { ServerResponse as Response }

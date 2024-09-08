@@ -1,6 +1,6 @@
 import { Pool } from "pg"
 
-class PostgresAdapter {
+export class PostgresAdapter {
   constructor(config) {
     this.pool = new Pool(config)
   }
@@ -62,5 +62,3 @@ class PostgresAdapter {
     return this.query({ text, values })
   }
 }
-
-export { PostgresAdapter }

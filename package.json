@@ -1,20 +1,12 @@
 {
   "name": "kuaralabs-afterworkjs",
-  "version": "1.3.0",
+  "version": "2.0.2",
   "description": "afterworkjs is the library that even his mother didn't love him correctly",
-  "outDir": "./dist",
-  "rootDir": "./lib",
   "main": "dist/afterwork.mjs",
   "type": "module",
   "scripts": {
-    "start": "ts-node lib/afterwork.mjs"
+    "start": "node dist/afterwork.mjs"
   },
-  "include": [
-    "../**/*.mjs"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
   "keywords": [
     "backend",
     "javascript",
@@ -22,12 +14,7 @@
   ],
   "author": "Yakup Cemil Kayabaş",
   "license": "MIT",
-  "devDependencies": {
-    "@types/jsonwebtoken": "^9.0.6",
-    "@types/pg": "^8.11.6"
-  },
   "dependencies": {
-    "http": "^0.0.1-security",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.8.0",
     "mysql2": "^3.10.3",
